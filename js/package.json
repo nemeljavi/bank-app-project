@@ -1,0 +1,20 @@
+{
+  "name": "pig-game",
+  "version": "1.0.0",
+  "description": "Pig Game",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo Hola",
+    "deploy": "rsync -ahv --exclude=node_modules --exclude=.git -e 'ssh -p 22123' . javitj@certweb.infenlaces.com:./pig-game"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "htmlhint": "^1.1.4",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
