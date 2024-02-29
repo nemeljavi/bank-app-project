@@ -101,24 +101,27 @@ createUsernames(accounts)
 btnLogin.addEventListener('click', function (e) {
   // 1. no llamar al servidor!!
   e.preventDefault()
-  // 2. Buscar cuenta de usuario y ver si existe
+  const user= document.querySelector('.login__input--user').value;
+  const pin= document.querySelector('.login__input--pin').value
 
-  fetch(API.)
+  // 2. hacer la llamada a la api
+  
+  fetch("http://localhost:3000?username=" + user + "&pin=" + pin)
       .then((res) => {
         if (!res.ok) {
-        throw new Error('error en la llamada a la api');
-        })
-
-        return res.json()
+          throw new Error("Error en la llamada a la API");
+        }
+        return res.json();
       })
-      .then((categorias) => setCategorias(categorias))
-      .catch((error) => console.log(error,'**********'))
+      .then((datos) => (datos))
+      .catch((error) => console.error(error, "**********"));
+  };
  
 
   // 4. Limpiar los campos
   inputLoginUsername.value = inputLoginPin.value = ''
   inputLoginPin.blur() // quitar el foco
-})
+)
 
 function updateUI({ movements }) {
   displayMovements(movements)
