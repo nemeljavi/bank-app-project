@@ -86,17 +86,7 @@ const createUsernames = function (accounts) {
 }
 createUsernames(accounts)
 
-// TAREAS:
-// Mostrar el texto de bienvenida
-// cambiar opacidad
-// Quitar los movimientos que hay en el HTML
-// poner los nuevos movimientos en el HTML
 
-// Hacer lo mismo desde REACT
-
-// SUBIR APP EN REACT
-// 1. Se compila: npm run build
-// 2. Subir la carpeta build a certweb // gh-pages ojo la carpeta no está en el raíz
 
 btnLogin.addEventListener('click', function (e) {
   // 1. no llamar al servidor!!
@@ -106,7 +96,7 @@ btnLogin.addEventListener('click', function (e) {
 
   // 2. hacer la llamada a la api
   
-  fetch("http://localhost:3000?username=" + user + "&pin=" + pin)
+  fetch("http://localhost:4000?username=" + user + "&pin=" + pin)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error en la llamada a la API");
