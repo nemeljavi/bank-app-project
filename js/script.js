@@ -89,12 +89,12 @@ createUsernames(accounts)
 
 
 btnLogin.addEventListener('click', function (e) {
-  // 1. no llamar al servidor!!
+  // no llamar al servidor!!
   e.preventDefault()
   const user= document.querySelector('.login__input--user').value;
   const pin= document.querySelector('.login__input--pin').value
 
-  // 2. hacer la llamada a la api
+  // hacer la llamada a la api
   
   fetch("http://localhost:4000?username=" + user + "&pin=" + pin)
       .then((res) => {
@@ -108,17 +108,17 @@ btnLogin.addEventListener('click', function (e) {
   };
  
 
-  // 4. Limpiar los campos
+  // Limpiar los campos
   inputLoginUsername.value = inputLoginPin.value = ''
   inputLoginPin.blur() // quitar el foco
 )
-
+  // actualiza la interfaz de usuario con los movimientos de la cuenta, el saldo y un resumen de los movimientos.
 function updateUI({ movements }) {
   displayMovements(movements)
   displayBalance(movements)
   displaySummary(movements)
 }
-
+ // muestra los movimientos de la cuenta en la interfaz de usuario
 function displayMovements(movements) {
   containerMovements.innerHTML = ''
   movements.forEach(function (mov, i) {
@@ -134,12 +134,12 @@ function displayMovements(movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html)
   })
 }
-
+// muestra saldo de la cuenta en la interfaz de usuario
 const displayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0)
   labelBalance.textContent = `${balance.toFixed(2)}€`
 }
-
+// muestra un resumen de los movimientos de la cuenta
 const displaySummary = function (movements) {
   const sumIn = movements
     .filter((mov) => mov > 0)
